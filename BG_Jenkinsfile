@@ -25,10 +25,35 @@ pipeline {
                }
            }		
         }
+		stage('unit-test') {
+	   steps {
+                echo 'unit test ..'
+		bat label: '', script: 'mvn test'	
+           }		
+        }
         stage('package') {
 	   steps {
                 echo 'Build executable file ..'
 		bat label: '', script: 'mvn package'	
+           }		
+        }
+		stage('deploy-to-QA') {
+	   steps {
+                echo 'Build executable file ..'
+		bat label: '', script: 'docker-compose up'	
+           }		
+        }
+		stage('functional-test') {
+	   steps {
+                echo 'validating..'
+		git url: 'https://github.com/RaviVC/WebApp_SmokeTest.git'
+		bat label: '', script: 'mvn test'
+           }
+        }
+		stage('deploy-to-PROD') {
+	   steps {
+                echo 'Build executable file ..'
+		bat label: '', script: 'docker-compose up'	
            }		
         }
     }
