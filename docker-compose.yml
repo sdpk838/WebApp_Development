@@ -7,8 +7,4 @@ services:
     image: docker-spring-boot
     ports:
       - 8888
-    networks:
-      - network1
- 
-networks:
-  network1:
+    
