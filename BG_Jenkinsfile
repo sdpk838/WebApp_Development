@@ -40,7 +40,7 @@ pipeline {
 		stage('deploy-to-QA') {
 	   steps {
 	   echo 'stopping the running container'
-	   bat label: '', script: 'docker-compose -f stop'
+	   bat label: '', script: 'docker-compose -f ./docker-compose.yml stop'
                 echo 'Build executable file ..'
 		bat label: '', script: 'docker-compose up'	
            }		
