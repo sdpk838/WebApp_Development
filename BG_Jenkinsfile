@@ -53,7 +53,8 @@ pipeline {
 		stage('deploy-to-PROD') {
 	   steps {
                 echo 'Build executable file ..'
-		bat label: '', script: 'docker-compose up'	
+		bat label: '', script: 'docker-compose up'
+		bat label: '', script: 'Ctrl+C'		
            }		
         }
     }
