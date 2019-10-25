@@ -42,7 +42,7 @@ pipeline {
 				echo 'stopping the running container'
 	    bat label: '', script: 'docker-compose -f ./docker-compose.yml stop'
                 echo 'Build executable file ..'
-		bat label: '', script: 'docker-compose -f ./docker-compose up'
+		bat label: '', script: 'docker-compose -f ./docker-compose.yml up'
 				echo 'validating..'
 		git url: 'https://github.com/RaviVC/WebApp_SmokeTest.git'
 		bat label: '', script: 'mvn test'
