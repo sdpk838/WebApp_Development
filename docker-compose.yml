@@ -5,6 +5,7 @@ services:
       context: ./
       dockerfile: Dockerfile
     image: docker-spring-boot
+    docker run -p 8888:8888
     ports:
       - 8888
       
