@@ -4,8 +4,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    image: docker-spring-boot
-    docker run -p 8888:8888
+    image: ravivc/docker-spring-boot
     ports:
       - 8888
       
