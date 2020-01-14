@@ -6,6 +6,6 @@ services:
       dockerfile: Dockerfile
     image: ravivc/docker-spring-boot
     ports:
-      - 8888/8888
+      - 8888:8888
       
     

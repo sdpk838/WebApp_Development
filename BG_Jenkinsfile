@@ -40,13 +40,7 @@ pipeline {
 		stage('deploy-to-QA') {
 	    steps {
                 echo 'Build executable file ..'
-		bat label: '', script: 'docker-compose.yml up -d'
-           }		
-        }
-		stage('functional-test') {
-	   steps {
-                echo 'functional-test ..'
-		bat label: '', script: 'mvn test'	
+		bat label: '', script: 'docker-compose up'
            }		
         }
     }
