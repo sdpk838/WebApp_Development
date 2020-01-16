@@ -40,7 +40,7 @@ pipeline {
 		stage('deploy-to-QA-FunctionalTest') {
 	    steps {
                 echo 'Build executable file ..'
-		bat label: '', script: 'docker-compose up'
+		bat label: '', script: 'docker-compose up -d'
 		echo 'Functional Test ..'
 		git url: 'https://github.com/RaviVC/WebApp_SmokeTest.git'
 		bat label: '', script: 'mvn test'
