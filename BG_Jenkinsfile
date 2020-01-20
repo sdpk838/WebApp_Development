@@ -51,11 +51,10 @@ pipeline {
         }
 		stage('Send Email Notification'){
 		steps {
-			echo 'Send Email_BuildReport..'
-		mail bcc: '', body: '''Hi All 
-		Welcome to Jenkins Email and Alerts
-		Regards,
-		Ravi''', cc: '', from: '', replyTo: '', subject: 'Email_BuildReport', to: 'ravivc197@gmail.com'
+			emailext body: '''Hi All 
+			Welcome to Jenkins Email Alerts 
+			Regards,
+			Ravi ''', subject: 'SmokeTestReport', to: 'ravivc197@gmail.com'
 			}
 		}
 		stage('PublishExtentReport'){
