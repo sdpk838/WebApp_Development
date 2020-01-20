@@ -51,6 +51,7 @@ pipeline {
         }
 		stage('Send Email Notification'){
 		steps {
+			echo 'Send Email_BuildReport..'
 		mail bcc: '', body: '''Hi All 
 		Welcome to Jenkins Email and Alerts
 		Regards,
@@ -59,6 +60,7 @@ pipeline {
 		}
 		stage('PublishExtentReport'){
 		steps{
+		echo 'AttachExtentReport..'
 		publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'E:\\gitcode_WebAppSmokeTest\\WebApp_SmokeTest\\ExtentReports', reportFiles: 'index.html', reportName: 'SmokeTestReport', reportTitles: ''])
 			}
 		}
