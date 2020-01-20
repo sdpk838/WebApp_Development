@@ -50,15 +50,17 @@ pipeline {
            }		
         }
 		stage('Send Email Notification'){
+		steps {
 		mail bcc: '', body: '''Hi All 
 		Welcome to Jenkins Email and Alerts
 		Regards,
 		Ravi''', cc: '', from: '', replyTo: '', subject: 'Email_BuildReport', to: 'ravivc197@gmail.com'
+			}
 		}
 		stage('PublishExtentReport'){
-		publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, 
-		reportDir: 'E:\\gitcode_WebAppSmokeTest\\WebApp_SmokeTest\\ExtentReports', 
-		reportFiles: 'index.html', reportName: 'SmokeTestReport', reportTitles: 'SpringBoot_SmokeTestResults'])
+		steps{
+		publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'E:\\gitcode_WebAppSmokeTest\\WebApp_SmokeTest\\ExtentReports', reportFiles: 'index.html', reportName: 'SmokeTestReport', reportTitles: ''])
+			}
 		}
     }
 }
