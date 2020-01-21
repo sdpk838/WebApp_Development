@@ -49,22 +49,24 @@ pipeline {
 		bat label: '', script: 'docker-compose down'
            }		
         }
-		stage('Send Email Notification'){
-		steps {
-			emailext body: '''Hi All 
-			Welcome to Jenkins Email Alerts 
-			Regards,
-			Ravi ''', subject: 'SmokeTestReport', to: 'ravivc197@gmail.com'
+		pipeline {
+			agent any
+    
+			stages {
+				('Ok') {
+				steps {
+                echo "Ok"
+				}
 			}
 		}
-		stage('PublishExtentReport'){
-		steps{
-		echo 'AttachExtentReport..'
-		publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'E:\\gitcode_WebAppSmokeTest\\WebApp_SmokeTest\\ExtentReports', reportFiles: 'index.html', reportName: 'SmokeTestReport', reportTitles: ''])
+		post {
+				always {
+            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+				}
 			}
 		}
 		
-    }
+	}
 }
 
 
