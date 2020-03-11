@@ -49,12 +49,16 @@ pipeline {
 		bat label: '', script: 'docker-compose down'
            }		
         }
-		stage("Email"){
+		stage("SendEmail"){
 		steps{
 				echo 'Send Email Notification .. '
 		emailext (to: 'ravivc197@gmail.com', replyTo: 'ravivc197@gmail.com', subject: "Email Report from - '${env.JOB_NAME}' ", body: readFile("target/surefire-reports/emailable-report.html"),mimeType: 'text/html');
 			}
 		}
+		stage("SendReport"){
+		steps{
+				echo 'AttachExtentReport .. '
+		publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'E:\\gitcode_WebApp\\WebApp_Development\\target\\surefire-reports', reportFiles: 'BG_SmokeTestResult.html', reportName: 'SmokeTestReport', reportTitles: ''])
     }
 }
 
