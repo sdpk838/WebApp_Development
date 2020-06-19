@@ -58,7 +58,7 @@ pipeline {
 		stage("PublishReport"){
 		steps{
 				echo 'AttachExtentReport .. '
-		publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'E:\\gitcode_WebApp\\WebApp_Development\\target\\surefire-reports', reportFiles: 'BG_SmokeTestResult.html', reportName: 'SmokeTestReport', reportTitles: ''])
+		publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'C:\Development\Dell_Backup_21stMay\gitcode_WebApp\WebApp_Development\target\surefire-reports', reportFiles: 'BG_SmokeTestResult.html', reportName: 'SmokeTestReport', reportTitles: ''])
 			}
 		}
     }
