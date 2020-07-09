@@ -42,27 +42,23 @@ pipeline {
                 echo 'Build executable file ..'
 		bat label: '', script: 'docker-compose up -d'
 		echo 'Functional Test ..'
-		git url: 'https://github.com/RaviVC/WebApp_SmokeTest.git'
+		git url: 'https://github.com/sdpk838/WebApp_SmokeTest.git'
 		bat label: '', script: 'mvn test'
 		echo 'Stop the contianers ..'
-		git url: 'https://github.com/RaviVC/WebApp_Development.git'
+		git url: 'https://github.com/sdpk838/WebApp_Development.git'
 		bat label: '', script: 'docker-compose down'
            }		
         }
 		stage("SendEmail"){
 		steps{
 				echo 'Send Email Notification .. '
-		emailext (to: 'ravivc197@gmail.com', replyTo: 'ravivc197@gmail.com', subject: "Email Report from - '${env.JOB_NAME}' ", body: readFile("target/surefire-reports/emailable-report.html"),mimeType: 'text/html');
+		emailext (to: 'sdpk838@gmail.com', replyTo: 'sdpk838@gmail.com', subject: "Email Report from - '${env.JOB_NAME}' ", body: readFile("target/surefire-reports/emailable-report.html"),mimeType: 'text/html');
 			}
 		}
-		stage("PublishReport"){
-		steps{
-				echo 'AttachExtentReport .. '
-		publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'C:\\Development\\Dell_Backup_21stMay\\gitcode_WebApp\\WebApp_Development\\target\\surefire-reports', reportFiles: 'BG_SmokeTestResult.html', reportName: 'SmokeTestReport', reportTitles: ''])
-			}
+
 		}
     }
-}
+
 
 
 
